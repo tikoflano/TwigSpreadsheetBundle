@@ -47,7 +47,7 @@ class TestAppKernel extends Kernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
-        $loader->load(sprintf('%s/config/config_%s.yml', $this->rootDir, $this->getEnvironment()));
+        $loader->load(sprintf('%s/config/config_%s.yml', __DIR__, $this->getEnvironment()));
     }
 
     /**

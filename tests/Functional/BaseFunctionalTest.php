@@ -7,7 +7,7 @@ use Erelke\TwigSpreadsheetBundle\Tests\Functional\Fixtures\TestAppKernel;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Reader\Exception;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use Symfony\Bundle\FrameworkBundle\Client;
+use Symfony\Component\HttpClient\HttpClient as Client;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\Filesystem\Exception\IOException;
@@ -61,8 +61,9 @@ abstract class BaseFunctionalTest extends WebTestCase
          * @var TestAppKernel $kernel
          */
         $kernel = parent::createKernel($options);
-        $kernel->setCacheDir(sprintf('%s/../../../var/cache/%s', $kernel->getRootDir(), str_replace('\\', DIRECTORY_SEPARATOR, static::class)));
-        $kernel->setLogDir(sprintf('%s/../../../var/logs/%s', $kernel->getRootDir(), str_replace('\\', DIRECTORY_SEPARATOR, static::class)));
+
+        $kernel->setCacheDir(sprintf('%s/../../../var/cache/%s', $kernel->getProjectDir(), str_replace('\\', DIRECTORY_SEPARATOR, static::class)));
+        $kernel->setLogDir(sprintf('%s/../../../var/logs/%s', $kernel->getProjectDir(), str_replace('\\', DIRECTORY_SEPARATOR, static::class)));
 
         return $kernel;
     }
@@ -115,6 +116,8 @@ abstract class BaseFunctionalTest extends WebTestCase
          */
         $router = static::$kernel->getContainer()->get('router');
         static::$client->request(Request::METHOD_GET, $router->generate($routeName, $routeParameters));
+
+
 
         return static::$client->getResponse();
     }
