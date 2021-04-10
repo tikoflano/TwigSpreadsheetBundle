@@ -57,7 +57,7 @@ class OdsXlsXlsxFunctionalTest extends BaseFunctionalTest
      */
     public function testCustomResponse($format)
     {
-        $response = $this->_getResponse('test_custom_response', ['templateName' => 'simple', '_format' => $format]);
+        $response = $this->getResponse('test_custom_response', ['templateName' => 'simple', '_format' => $format]);
 
         static::assertNotNull($response, 'Response does not exist');
         static::assertContains('foobar.bin', $response->headers->get('Content-Disposition'), 'Unexpected or missing header "Content-Disposition"');

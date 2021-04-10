@@ -93,7 +93,7 @@ class CsvOdsXlsXlsxErrorTwigTest extends BaseTwigTest
     public function testStartRowIndexError($format)
     {
         $this->expectException(TypeError::class);
-        $this->expectExceptionMessage('Argument 1 passed to MewesK\TwigSpreadsheetBundle\Wrapper\PhpSpreadsheetWrapper::startRow() must be of the type int or null');
+        $this->expectExceptionMessage('Argument 1 passed to Erelke\TwigSpreadsheetBundle\Wrapper\PhpSpreadsheetWrapper::startRow() must be of the type int or null');
 
         $this->getDocument('rowIndexError', $format);
     }
