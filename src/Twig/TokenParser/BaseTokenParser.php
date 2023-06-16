@@ -84,7 +84,7 @@ abstract class BaseTokenParser extends Twig_TokenParser
      * @throws Exception
      * @throws InvalidArgumentException
      */
-    public function parse(Twig_Token $token)
+    public function parse(Twig_Token $token): Twig_Node
     {
         // parse parameters
         $nodes = $this->parseParameters($this->configureParameters($token));

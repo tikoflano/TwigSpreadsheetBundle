@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
      *
      * @throws RuntimeException
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
     	if (version_compare(Kernel::VERSION, '4.3.0', '>=')) {
 		    $treeBuilder = new TreeBuilder('erelke_twig_spreadsheet');

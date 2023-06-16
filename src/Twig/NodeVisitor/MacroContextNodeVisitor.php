@@ -9,7 +9,7 @@ use Twig\NodeVisitor\AbstractNodeVisitor as Twig_BaseNodeVisitor;
 use Twig\Node\Expression\MethodCallExpression as Twig_Node_Expression_MethodCall;
 use Twig\Node\Expression\ConstantExpression as Twig_Node_Expression_Constant;
 use Twig\Node\Expression\NameExpression as Twig_Node_Expression_Name;
-use Twig\Node\Expression\ArrayExpression as Twig_Node_Expression_Array;;
+use Twig\Node\Expression\ArrayExpression as Twig_Node_Expression_Array;
 
 /**
  * Class MacroContextNodeVisitor.
@@ -19,7 +19,7 @@ class MacroContextNodeVisitor extends Twig_BaseNodeVisitor
     /**
      * {@inheritdoc}
      */
-    public function getPriority()
+    public function getPriority(): int
     {
         return 0;
     }
@@ -27,7 +27,7 @@ class MacroContextNodeVisitor extends Twig_BaseNodeVisitor
     /**
      * {@inheritdoc}
      */
-    protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
+    protected function doEnterNode(Twig_Node $node, Twig_Environment $env): Twig_Node
     {
         // add wrapper instance as argument on all method calls
         if ($node instanceof Twig_Node_Expression_MethodCall) {
@@ -50,7 +50,7 @@ class MacroContextNodeVisitor extends Twig_BaseNodeVisitor
     /**
      * {@inheritdoc}
      */
-    protected function doLeaveNode(Twig_Node $node, Twig_Environment $env)
+    protected function doLeaveNode(Twig_Node $node, Twig_Environment $env): ?Twig_Node
     {
         return $node;
     }
